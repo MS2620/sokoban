@@ -2,7 +2,7 @@
 package assessment;
 
 public class Floor extends MapElement {
-    Floor(){
+    Floor() {
         setSymbol("F");
         setImgFileName("/graphics/imgf.jpg");
     }

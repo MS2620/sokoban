@@ -3,7 +3,7 @@ package assessment;
 public class MapElement {
     private String symbol;
     private String imgFileName;
-    private boolean canBePushed;
+    public boolean canBePushed;
     private boolean isDestination;
     private boolean obs;
     private MapElement underneath;
@@ -18,21 +18,21 @@ public class MapElement {
         return imgFileName;
     }
 
-    // public boolean getIsDestination(){
-    //
-    // }
+    public boolean getIsDestination() {
+        return isDestination;
+    }
 
-    // public boolean getObs(){
-    //
-    // }
+    public boolean getObs() {
+        return obs;
+    }
 
     public String getSymbol() {
         return symbol;
     }
 
-    // public MapElement getUnderneath(){
-    //
-    // }
+    public MapElement getUnderneath() {
+        return underneath;
+    }
 
     public int getX() {
         return x;
@@ -42,8 +42,8 @@ public class MapElement {
         return y;
     }
 
-    public void setCanBePushed() {
-        this.canBePushed = symbol.equals("C");
+    public void setCanBePushed(boolean value) {
+        this.canBePushed = value;
     }
 
     public void setImgFileName(String imgFileName) {
@@ -51,11 +51,13 @@ public class MapElement {
     }
 
     public void setIsDestionation(boolean isDestination) {
-        this.isDestination = true;
+        this.isDestination = isDestination;
     }
 
     public void setObs(boolean value) {
-        this.obs = true;
+        int x = getX();
+        int y = getY();
+        this.obs = value;
     }
 
     public void setSymbol(String symbol) {
@@ -63,15 +65,15 @@ public class MapElement {
     }
 
     public void setUnderneath(MapElement underneath) {
-
+        this.underneath = underneath;
     }
 
     public void setX(int value) {
-
+        this.x = value;
     }
 
     public void setY(int value) {
-
+        this.y = value;
     }
 
 }

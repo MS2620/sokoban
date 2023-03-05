@@ -23,7 +23,7 @@ public class Game extends javax.swing.JFrame implements KeyListener {
     private JPanel centrePanel;
     private JPanel soutPanel;
     private JLabel[][] myElements = new JLabel[12][12];
-    private HashMap<String, String> imageHashMap;
+    private HashMap<String, ImageIcon> imageHashMap;
     private Map tmpMap;
 
     /**
@@ -31,9 +31,7 @@ public class Game extends javax.swing.JFrame implements KeyListener {
      */
     public Game() {
         initComponents();
-        imageHashMap = new HashMap();
-
-        imageHashMap.put("Wall", "/graphics/imgw.jpg");
+        imageHashMap = new HashMap<String, ImageIcon>();
 
         for (int i = 0; i < myElements.length; i++) {
             for (int j = 0; j < myElements.length; j++) {
@@ -43,7 +41,6 @@ public class Game extends javax.swing.JFrame implements KeyListener {
         }
         this.addKeyListener(this);
         setFocusable(true);
-
         tmpMap = new Map();
         drawMap();
     }
@@ -62,7 +59,7 @@ public class Game extends javax.swing.JFrame implements KeyListener {
     }
 
     private void getImage(String filename) {
-        imageHashMap.get("Wall");
+        imageHashMap.put(filename, new ImageIcon(getClass().getResource(filename)));
     }
 
     @Override
@@ -74,15 +71,19 @@ public class Game extends javax.swing.JFrame implements KeyListener {
         if (e.getKeyChar() == 'w' || e.getKeyCode() == KeyEvent.VK_UP) {
             tmpMap.movePlayer(1);
             lbl_output.setText("You pressed up.");
+            repaint();
         } else if (e.getKeyChar() == 's' || e.getKeyCode() == KeyEvent.VK_DOWN) {
             tmpMap.movePlayer(2);
             lbl_output.setText("You pressed down.");
+            repaint();
         } else if (e.getKeyChar() == 'a' || e.getKeyCode() == KeyEvent.VK_LEFT) {
             tmpMap.movePlayer(3);
             lbl_output.setText("You pressed left.");
+            repaint();
         } else if (e.getKeyChar() == 'd' || e.getKeyCode() == KeyEvent.VK_RIGHT) {
             tmpMap.movePlayer(4);
             lbl_output.setText("You pressed right.");
+            repaint();
         }
 
         drawMap();
