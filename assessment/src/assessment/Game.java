@@ -85,7 +85,7 @@ public class Game extends javax.swing.JFrame implements KeyListener {
             lbl_output.setText("You pressed right.");
             repaint();
         }
-
+        repaint();
         drawMap();
     }
 

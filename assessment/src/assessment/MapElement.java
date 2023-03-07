@@ -55,8 +55,6 @@ public class MapElement {
     }
 
     public void setObs(boolean value) {
-        int x = getX();
-        int y = getY();
         this.obs = value;
     }
 

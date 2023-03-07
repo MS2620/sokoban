@@ -12,7 +12,7 @@ public class Map extends MapElement {
     private Boolean complete;
     private boolean isPushable;
     private int noOfMoves;
-    private boolean obs;
+    private boolean obs = false;
     String line;
 
     Map() {
@@ -25,6 +25,9 @@ public class Map extends MapElement {
                 for (int i = 0; i < line.length(); i++) {
                     if (line.substring(i, i + 1).equals("W")) {
                         myMap[row][i] = new Wall();
+                        setX(row);
+                        setY(i);
+                        System.out.println(row +  i);
                     } else if (line.substring(i, i + 1).equals("F")) {
                         myMap[row][i] = new Floor();
                     } else if (line.substring(i, i + 1).equals("C")) {
@@ -79,17 +82,26 @@ public class Map extends MapElement {
     }
 
     public boolean isObstacleAhead(int x, int y) {
-
-        if (getObs() == true) {
-            System.out.println("Its true");
-            return true;
-        }
-        return false;
+        obs = false;
+            if(myMap[x][y].getSymbol().equals("W")){
+                obs = true;
+            }
+            System.out.println(obs);
+        return obs;
     }
 
-    // public boolean isPushableObject(int x, int y) {
+    public boolean isPushableObject(int x, int y) {
+        isPushable = false;
 
-    // }
+        if(myMap[x][y].getSymbol().equals("C")){
+                isPushable = true;
+                if(myMap[x - 2][y].getSymbol().equals("W")){
+                    isPushable = false;
+                }
+        }
+        System.out.println(isPushable);
+    return isPushable;
+    }
 
     public void loadMap(String mapName) {
 
@@ -102,46 +114,58 @@ public class Map extends MapElement {
 
     public void movePlayer(int dir) {
         switch (dir) {
-            case 1 -> {
-                // isPushableObject(breadth, length);
-                isObstacleAhead(breadth, length);
-                if (obs == true) {
+            case 1 -> {              
+                int b = breadth - 1;
+                isObstacleAhead(b, length);
+                isPushableObject(b, length);
+                if (obs) {
                     System.out.println("obs ahead cant move.");
+                    
                 } else {
-                    noOfMoves += 1;
+                    // noOfMoves += 1;
                     myMap[breadth][length] = new Floor();
                     myMap[--breadth][length] = new Player();
                 }
+                    if (isPushable) {
+                        myMap[breadth][length] = new Floor();
+                        myMap[breadth][length] = new Player();
+                        myMap[breadth - 1][length] = new Crate();  
+                    } else {
+                        // noOfMoves += 1;
+                        System.out.println("obs is not pushable.");
+                    }
+                
+
             }
             case 2 -> {
-                if (isPushable == false) {
-                    noOfMoves += 1;
-                    myMap[breadth][length] = new Floor();
-                    myMap[++breadth][length] = new Player();
+                int b = breadth + 1;
+                isObstacleAhead(b, length);
+                if (obs) {
+                    System.out.println("Cant Move");
                 } else {
-                    noOfMoves += 1;
+                    // noOfMoves += 1;
                     myMap[breadth][length] = new Floor();
                     myMap[++breadth][length] = new Player();
                 }
             }
             case 3 -> {
-                if (isPushable == false) {
-                    noOfMoves += 1;
-                    myMap[breadth][length] = new Floor();
-                    myMap[breadth][--length] = new Player();
+                int l = length - 1;
+                isObstacleAhead(breadth, l);
+                if (obs) {
+                    System.out.println("Cant Move");
                 } else {
-                    noOfMoves += 1;
+                    // noOfMoves += 1;
                     myMap[breadth][length] = new Floor();
                     myMap[breadth][--length] = new Player();
                 }
             }
             case 4 -> {
-                if (isPushable == false) {
-                    noOfMoves += 1;
-                    myMap[breadth][length] = new Floor();
-                    myMap[breadth][++length] = new Player();
+                int l = length + 1;
+                isObstacleAhead(breadth, l);
+                if (obs) {
+                    System.out.println("Cant Move");
                 } else {
-                    noOfMoves += 1;
+                    // noOfMoves += 1;
                     myMap[breadth][length] = new Floor();
                     myMap[breadth][++length] = new Player();
                 }
