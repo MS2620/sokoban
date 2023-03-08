@@ -98,19 +98,19 @@ public class Map extends MapElement {
                     } 
                     if (myMap[breadth - 1][length].getObs() == false){
                         if (myMap[breadth - 1][length].getSymbol().equals("D")){
-        //                    myMap[breadth][length] = new Floor();
-        //                    myMap[breadth][length] = new Player();
+                           myMap[breadth][length] = new Floor();
+                           myMap[breadth][length] = new Player();
                             myMap[breadth][length].setUnderneath(new Diamond());
                             System.out.println(myMap[breadth][length].getUnderneath() + " at " + breadth + " and " + length);
                         }
                         myMap[breadth][length] = new Floor();
                         myMap[--breadth][length] = new Player();  
-                        if(myMap[breadth+1][length].getUnderneath() == new Diamond()){
-                            System.out.println("diamond to be placed");
-                            myMap[++breadth][length] = new Diamond();
-                        }
-                    } 
+                    }  
                     
+                    if(myMap[breadth][length].getUnderneath() == new Diamond()){
+                        System.out.println("diamond to be placed");
+                        myMap[++breadth][length] = new Diamond();
+                    }
                 } 
             case 2 -> {
                 if(myMap[breadth + 1][length].getCanBePushed()){
