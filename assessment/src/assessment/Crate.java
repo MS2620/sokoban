@@ -7,7 +7,5 @@ public class Crate extends MapElement {
         setImgFileName("/graphics/imgc.jpg");
         setCanBePushed(true);
         setObs(true);
-        setX(1);
-        setY(1);
     }
 }

@@ -4,11 +4,8 @@ public class MapElement {
     private String symbol;
     private String imgFileName;
     public boolean canBePushed;
-    private boolean isDestination;
     private boolean obs;
     private MapElement underneath;
-    private int x;
-    private int y;
 
     public boolean getCanBePushed() {
         return canBePushed;
@@ -16,10 +13,6 @@ public class MapElement {
 
     public String getImgFileName() {
         return imgFileName;
-    }
-
-    public boolean getIsDestination() {
-        return isDestination;
     }
 
     public boolean getObs() {
@@ -34,14 +27,6 @@ public class MapElement {
         return underneath;
     }
 
-    public int getX() {
-        return x;
-    }
-
-    public int getY() {
-        return y;
-    }
-
     public void setCanBePushed(boolean value) {
         this.canBePushed = value;
     }
@@ -49,11 +34,7 @@ public class MapElement {
     public void setImgFileName(String imgFileName) {
         this.imgFileName = imgFileName;
     }
-
-    public void setIsDestionation(boolean isDestination) {
-        this.isDestination = isDestination;
-    }
-
+    
     public void setObs(boolean value) {
         this.obs = value;
     }
@@ -62,16 +43,9 @@ public class MapElement {
         this.symbol = symbol;
     }
 
-    public void setUnderneath(MapElement underneath) {
-        this.underneath = underneath;
+    public void setUnderneath(MapElement under) {
+        this.underneath = under;
     }
 
-    public void setX(int value) {
-        this.x = value;
-    }
-
-    public void setY(int value) {
-        this.y = value;
-    }
 
 }

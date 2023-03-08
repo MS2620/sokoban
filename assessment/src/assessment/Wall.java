@@ -5,5 +5,6 @@ public class Wall extends MapElement{
         setSymbol("W");
         setImgFileName("/graphics/imgw.jpg");
         setObs(true);
+        setCanBePushed(false);
     }
 }

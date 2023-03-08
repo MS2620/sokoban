@@ -6,7 +6,5 @@ public class Diamond extends MapElement {
         setImgFileName("/graphics/imgd.jpg");
         setCanBePushed(false);
         setObs(false);
-        setX(1);
-        setY(1);
     }
 }
